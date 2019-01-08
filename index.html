@@ -1,1 +1,131 @@
-<embed src="http://78.108.216.201:9999" style="width:500px; height: 300px;">
+<!DOCTYPE html><html>
+<head>
+<link rel="icon" type="image/png" href="/images/favicon.ico" />
+<meta name="author" content="psy">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="content-type" content="text/xml; charset=utf-8" /> 
+<title>UFONet - [ C&C/DarkNet ]</title>
+<script language="javascript" src="/lib.js"></script>
+<script language="javascript" src="js/stars.js"></script>
+<style>
+body{font-size:15px}a,a:hover{outline:none;color:red;font-size:14px;font-weight:700}nav ul ul{display:none}nav ul li:hover > ul{display:block}nav ul{list-style:none;position:relative;display:inline-table}nav ul:after{content:"";clear:both;display:block}nav ul li{font-size:12px}nav ul li a{display:block;padding:2px 3px}html,body{height:100%}ul,li{margin:0;padding:0}.ringMenu{width:100px;margin:80px auto}.ringMenu ul{list-style:none;position:relative;width:100px;color:#fff}.ringMenu ul a{color:#fff}.ringMenu ul li{-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;transition:all .3s ease-in-out}.ringMenu ul li a{display:block;width:100px;height:100px;background:rgba(50,50,50,0.7);text-align:center;line-height:100px;-webkit-border-radius:50px;-moz-border-radius:50px;border-radius:50px}.ringMenu ul li a:hover{background:rgba(230,150,20,0.7)}.ringMenu ul li:not(.main){-webkit-transform:rotate(-180deg) scale(0);-moz-transform:rotate(-180deg) scale(0);-o-transform:rotate(-180deg) scale(0);transform:rotate(-180deg) scale(0);opacity:0}.ringMenu:hover ul li{-webkit-transform:rotate(0) scale(1);-moz-transform:rotate(0) scale(1);-o-transform:rotate(0) scale(1);transform:rotate(0) scale(1);opacity:1}.ringMenu ul li.top{-webkit-transform-origin:50% 152px;-moz-transform-origin:50% 152px;-o-transform-origin:50% 152px;transform-origin:50% 152px;position:absolute;top:-102px;left:0}.ringMenu ul li.bottom{-webkit-transform-origin:50% -52px;-moz-transform-origin:50% -52px;-o-transform-origin:50% -52px;transform-origin:50% -52px;position:absolute;bottom:-102px;left:0}.ringMenu ul li.right{-webkit-transform-origin:-52px 50%;-moz-transform-origin:-52px 50%;-o-transform-origin:-52px 50%;transform-origin:-52px 50%;position:absolute;top:0;right:-102px}.ringMenu ul li.left{-webkit-transform-origin:152px 50%;-moz-transform-origin:152px 50%;-o-transform-origin:152px 50%;transform-origin:152px 50%;position:absolute;top:0;left:-102px}textarea{padding:30px 0}
+</style><script language="javascript"> 
+function Requests() {
+        var win_requests = window.open("requests","_blank","fullscreen=no, titlebar=yes, top=180, left=320, width=720, height=460, resizable=yes", false);
+      }
+function Grid() {
+        var win_requests = window.open("grid","_blank","fullscreen=no, scrollbars=1, titlebar=yes, top=180, left=320, width=720, height=460, resizable=yes", false);
+      }
+function Wargames() {
+        var win_requests = window.open("wargames","_blank","fullscreen=no, scrollbars=1, titlebar=yes, top=180, left=320, width=720, height=460, resizable=yes", false);
+      }
+function ShowPanel() {
+        if (document.getElementById("extra_attack").checked){
+               document.getElementById("extra_panel").style.display = "block";
+               document.getElementById("loic").value = "";
+               document.getElementById("loris").value = "";
+               document.getElementById("ufosyn").value = "";
+               document.getElementById("spray").value = "";
+               document.getElementById("smurf").value = "";
+               document.getElementById("xmas").value = "";
+               document.getElementById("dbstress").value = "";
+             } else {
+               document.getElementById("extra_panel").style.display = "none";
+               document.getElementById("loic").value = "";
+               document.getElementById("loris").value = "";
+               document.getElementById("ufosyn").value = "";
+               document.getElementById("spray").value = "";
+               document.getElementById("smurf").value = "";
+               document.getElementById("xmas").value = "";
+               document.getElementById("dbstress").value = "";
+             }
+      }
+function Maps() {
+         var win_map = window.open("/cmd_view_attack?target="+target,"_blank","fullscreen=yes, resizable=yes", false);
+         win_map.resizeTo(screen.width,screen.height);
+      }
+function Start(){
+        document.getElementById("attack_button").text = "STOP!"
+        document.getElementById("attack_button").style = "color:red; height:40px; width:240px; font-weight:bold; background-color:yellow; border: 2px solid red;"
+	target=document.getElementById("target").value
+        String.prototype.startsWith = function(prefix){
+        return this.indexOf(prefix) === 0;
+        }
+        if(target.startsWith("http")){
+             path=document.getElementById("path").value
+             rounds=document.getElementById("rounds").value
+             dbstress=document.getElementById("dbstress").value
+             loic=document.getElementById("loic").value
+             loris=document.getElementById("loris").value
+             ufosyn=document.getElementById("ufosyn").value
+             spray=document.getElementById("spray").value
+             smurf=document.getElementById("smurf").value
+             xmas=document.getElementById("xmas").value
+             if(ufosyn || spray || smurf || xmas){ // root required!
+               window.alert("You need 'root' access!. Check shell and enter your password.");
+             }
+             params="path="+escape(path)+"&rounds="+escape(rounds)+"&target="+escape(target)+"&dbstress="+escape(dbstress)+"&loic="+escape(loic)+"&loris="+escape(loris)+"&ufosyn="+escape(ufosyn)+"&spray="+escape(spray)+"&smurf="+escape(smurf)+"&xmas="+escape(xmas)
+             if (document.getElementById("visual_attack").checked){
+                document.getElementById("visual_attack").value = "on";
+             } else {
+                document.getElementById("visual_attack").value = "off";
+             }
+             if(document.getElementById("visual_attack").value=="on"){
+                Maps() 
+             }
+        }else{
+          window.alert("You need to enter a valid url: http(s)://target.com");
+          return
+        }
+	runCommandX("cmd_attack",params)
+}
+</script>
+</head>
+<body bgcolor="black" text="yellow" style="font-family:Â Courier, 'Courier New', monospace;" onload="start()" onresize="resize()" onorientationchange="resize()" onmousedown="context.fillStyle='rgba(0,0,0,'+opacity+')'" onmouseup="context.fillStyle='rgb(0,0,0)'">
+<canvas id="starfield" style="z-index:-1; background-color:#000000; position:fixed; top:0; left:0;"></canvas>
+<center>
+<table cellpadding="38" cellspacing="38">
+<tr>
+ <td>
+<div class="ringMenu">
+<ul>
+  <li class="main"><a href="attack">Attack</a></li>
+  <li class="top"><a href="help">Help</a></li>
+  <li class="right"><a href="botnet">Botnet</a></li>
+  <li class="bottom"><a href="inspect">Inspect</a></li>
+  <li class="left"><a href="gui">RETURN</a></li>
+</ul>
+</div>
+ </td>
+ <td>
+<table bgcolor="black" cellpadding="24" cellspacing="25" border="1">
+<tr><td>
+<pre>
+  * Set your target:     <input type="text" name="target" id="target" size="30" placeholder="http(s)://" required pattern="https?://.+">
+
+  * Set place to attack: <input type="text" name="path" id="path" size="30" placeholder="/path/big.jpg">
+
+  * Number of rounds:    <input type="text" name="rounds" id="rounds" size="5" value="1">
+
+<hr>
+  <button title="Configure how you will perform requests (proxy, HTTP headers, etc)..." onclick="Requests()">Configure requests</button> | <input type="checkbox" name="visual_attack" id="visual_attack"> Generate map! | <input type="checkbox" name="extra_attack" id="extra_attack" onclick='javascript:ShowPanel();'> Extra(s)
+
+<hr><div id="extra_panel" style="display:none;">
+<table bgcolor="black" cellpadding="4" cellspacing="5" border="1"><tr>
+<td>* <a href="https://en.wikipedia.org/wiki/Low_Orbit_Ion_Cannon" target="_blank">LOIC</a>:   <input type="text" name="loic" id="loic" size="4" placeholder="100"></td>
+<td>* <a href="https://en.wikipedia.org/wiki/Slowloris_(software)" target="_blank">LORIS</a>:  <input type="text" name="loris" id="loris" size="4" placeholder="101"></td>
+<td>* <a href="https://en.wikipedia.org/wiki/SYN_flood" target="_blank">UFOSYN</a>: <input type="text" name="ufosyn" id="ufosyn" size="4" placeholder="100"></td></tr><tr>
+<td>* <a href="https://en.wikipedia.org/wiki/DRDOS" target="_blank">SPRAY</a>:  <input type="text" name="spray" id="spray" size="4" placeholder="110"></td>
+<td>* <a href="https://en.wikipedia.org/wiki/Smurf_attack" target="_blank">SMURF</a>:  <input type="text" name="smurf" id="smurf" size="4" placeholder="100"></td>
+<td>* <a href="https://en.wikipedia.org/wiki/Christmas_tree_packet" target="_blank">XMAS</a>:   <input type="text" name="xmas" id="xmas" size="4" placeholder="111"></td></tr></table>
+<hr>
+  * Set db stress parameter:   <input type="text" name="dbstress" id="dbstress" size="22" placeholder="search.php?q=">
+
+<hr></div>
+  <button title="Start to attack your target..." onClick=Start() style="color:yellow; height:40px; width:240px; font-weight:bold; background-color:red; border: 2px solid yellow;" id="attack_button">ATTACK!</button> | Total Botnet = <b><a href='javascript:runCommandX("cmd_list_army")'><font size='5'>1165</font></a></b></pre>
+</td><td>
+<table><tr><td><img src="/images/aliens/alien6.png" onclick="Grid()"></td></tr><tr><td><img src="/images/aliens/alien8.png" onclick="Wargames()"></td></tr></table>
+</td></tr></table>
+ </td></tr></table>
+<hr>
+<div id="cmdOut"></div>
